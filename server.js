@@ -34,8 +34,8 @@ app.get('/api/hello', function (req, res) {
 });
 
 app.post('/api/shorturl/new', function(req, res) {
-  const url = req.body.url;
-  if (url.indexOf('http://') < 0) {
+  let url = req.body.url;
+  if (url.match(/http(s)?:\/\//) == null) {
     url = "http://" + url;
   }
   const parsedUrl = new URL(url);

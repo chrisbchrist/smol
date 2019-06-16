@@ -1,10 +1,7 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
-  "name": "starter-react",
+  "name": "smol",
   "version": "0.0.1",
-  "description": "A small scaffold to get you started using React with Webpack",
+  "description": "A simple MERN URL shortener",
   "main": "server.js",
   "scripts": {
     "build": "webpack",
@@ -34,7 +31,12 @@
     "@fortawesome/react-fontawesome": "^0.1.3",
     "@fortawesome/free-regular-svg-icons": "^5.6.1",
     "react-copy-to-clipboard": "^5.0.1",
-    "url-parse": "^1.4.7"
+    "url-parse": "^1.4.7",
+    "file-loader": "^3.0.1",
+    "typescript": "^3.4.4",
+    "@types/react": "^16.7.17",
+    "@types/react-dom": "^16.0.11",
+    "@babel/preset-env": "^7.2.0"
   },
   "engines": {
     "node": "10.x"

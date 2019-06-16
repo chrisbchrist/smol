@@ -1,5 +1,21 @@
-A simple MERN URL shortener with a UI and 2 API routes for shortening links and redirecting.  Validates URL's with the npm ```url``` package, resolves hosts with ```dns``` and saves to an external MongoDB database with an auto-incrementing collection for the shortest possible ID.
+MERN URL Shortener
+===========================
 
-Requires an environment variable with the URI of your MongoDB database.
+A simple URL shortening microservice with a single page UI.
 
-Built on [Glitch](https://glitch.com/about).
+POST a valid ```url``` parameter to ```'/api/shorturl/new'``` to receive a response:
+```
+{
+  original_url: //The URL you sent,
+  short_url: //The ID to redirect to that URL
+}
+```
+
+And then access the URL redirect by navigating to ```'/api/shorturl/:url_id'```.
+
+Uses NPM's ```url``` and ```dns``` libraries to validate and resolve URL's, and a counter collection to auto-increment ID's for the shortest ones possible.
+
+
+Exported from [Glitch](https://glitch.com/about).
+
+\ ゜o゜)ノ

@@ -10,8 +10,6 @@ const Shortener = (props) => {
   const [shortUrl, setShortUrl] = useState('');
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
-  const inputRef = useRef(null);
-  
   
   function addLink(url) {
     let newLinks = [...links, url];
@@ -19,6 +17,7 @@ const Shortener = (props) => {
   }
   
   function handleChange(e) {
+    success && setSuccess(false);
     const value = e.target.value;
     setInput(value);
   }
@@ -31,7 +30,7 @@ const Shortener = (props) => {
     };
     
     fetch('/api/shorturl/new', {
-        method: 'POST', // *GET, POST, PUT, DELETE, etc.
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -60,15 +59,17 @@ const Shortener = (props) => {
   return (
       
         <div className="input-wrapper">
+        <div className='shortener'>
          <div className="shortener__form" action="api/shorturl/new" method="POST">
           <label className='shortener__label' for="url_input">Try it!</label>
           <input id="url_input" class="shortener__input" type="text" name="url" value={input} onChange={handleChange} placeholder="Tell me your longest URL"/>
           <button id="submit" class="shortener__submit" onClick={input.length > 3 ? shortenLink : undefined}>
-            <FontAwesomeIcon icon={faShareSquare}/> Shorten
+            { success ? <span><FontAwesomeIcon icon={faClipboard}/> Copy</span> : <span><FontAwesomeIcon icon={faShareSquare}/> Shorten</span>}
            </button>
          </div>
         {error && <div className='shortener__error'>Invalid URL, try again!</div>}
         <ShortLinkList links={links}/>
+        </div>
       </div>
   )
 }
